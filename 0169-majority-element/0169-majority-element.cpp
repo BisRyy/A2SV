@@ -3,11 +3,8 @@ public:
     int majorityElement(vector<int>& nums) {
         unordered_map<int, int> s; int ans = 0;
         for(int i : nums){
-           s[i]++;
-        }
-        for(auto x: nums){
-            if(s[x] > nums.size()/2)
-                return x;
+             if(++s[i] > nums.size()/2)
+                return i;
         }
         return ans;
     }
