@@ -3,24 +3,26 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        i = m - 1
-        j = n - 1
-        k = m + n -1
+        left_start = m-1
+        right_start = n-1
+        up = len(nums1)-1
 
-        while j >=0 and i >=0:
-            if nums1[i] <= nums2[j]:
-                nums1[k] = nums2[j]
-                j-=1
-                k-=1
+        if len(nums1) == n:
+            for i in range(n):
+                nums1[i] = nums2[i]
 
-            else:
-                nums1[k] = nums1[i]
-                i-=1
-                k-=1
-
-        while j >=0:
-            nums1[k] = nums2[j]
-            j-=1
-            k-=1
+        while left_start >= 0 and right_start >= 0:
+            if nums1[left_start] > nums2[right_start]:
+                nums1[up] = nums1[left_start] 
+                left_start-=1
+                up -=1
+            elif nums1[left_start] <= nums2[right_start]:
+                nums1[up] = nums2[right_start] 
+                right_start-=1
+                up -=1
+        while right_start >= 0:
+            nums1[up] = nums2[right_start] 
+            right_start-=1
+            up -=1      
 
             
