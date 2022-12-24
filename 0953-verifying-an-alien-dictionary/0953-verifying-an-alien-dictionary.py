@@ -13,13 +13,6 @@ class Solution:
                     if index == min_length -1 and (len(current) > len(next)):
                         return False
                     index +=1
-                    # print( order.find(current[index]), order.find(next[index]))
-                    # if (len(current) <= len(next)):
-                    #     index +=1
-                    # elif index < min(len(current), len(next)):
-                    #     index +=1
-                    # else:
-                    #     return False
                 else:
                     print(3)
                     break
