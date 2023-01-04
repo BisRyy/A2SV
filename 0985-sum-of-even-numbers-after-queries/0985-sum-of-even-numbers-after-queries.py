@@ -23,6 +23,7 @@ class Solution:
                 
             elif before % 2 != 0 and after % 2 == 0:
                 current_sum += after
+                
             answer.append(current_sum)
         return answer
                 
