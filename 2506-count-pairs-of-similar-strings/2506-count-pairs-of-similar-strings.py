@@ -20,3 +20,8 @@ class Solution:
                     count += 1
                     
         return count
+    
+    
+    # add comments to describe important operations 
+    # add space between assignment and the for loop 
+    # same = same + 1
