@@ -18,10 +18,10 @@ class Solution:
             if before % 2 == 0 and after % 2 == 0:
                 current_sum += change
                 
-            if before % 2 == 0 and after % 2 != 0:
+            elif before % 2 == 0 and after % 2 != 0:
                 current_sum -= before
                 
-            if before % 2 != 0 and after % 2 == 0:
+            elif before % 2 != 0 and after % 2 == 0:
                 current_sum += after
             answer.append(current_sum)
         return answer
