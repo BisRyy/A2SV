@@ -1,0 +1,29 @@
+
+
+n = int(input())
+
+for i in range(n):
+    val = input().split()
+    
+    if val[0] == val[1]:
+        print('=')
+    
+    elif val[0] == 'M':
+        print('<') if val[1][-1] == 'L' else print('>')
+        
+    elif val[0][-1] == 'L':
+        print('<') if val[1][-1] == 'L' and len(val[1]) > len(val[0]) else print('>')
+        
+    elif val[0][-1] == 'S':
+        print('>') if val[1][-1] == 'S' and len(val[1]) > len(val[0]) else print('<')
+'''
+XXXS < XS
+XXXL > XL
+XL > M
+XXL = XXL
+XXXXXS < M
+XL > XXXS
+
+Wrote this on Mobile :)
+'''
+
