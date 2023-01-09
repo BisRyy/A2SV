@@ -1,0 +1,15 @@
+for test in range(int(input())):
+    n , cost = map(int, input().split())
+
+    count = {}
+    arr = list(map(int, input().split()))
+    total_cost = 0
+
+    for orbit in set(arr):
+        count[orbit] =  arr.count(orbit)
+        if count[orbit] > cost:
+            total_cost += cost
+        else:
+            total_cost += count[orbit]
+            
+    print(total_cost)
