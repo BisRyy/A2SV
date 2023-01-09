@@ -1,7 +1,7 @@
- 
+
 class Solution:
     def onesMinusZeros(self, grid: List[List[int]]) -> List[List[int]]:
-        ans = []
+        # ans = []
         onesrow,onescol = [],[]
         for i in range(len(grid[0])):
             onesCol = 0
@@ -12,8 +12,7 @@ class Solution:
             onesrow.append(sum(row))
         
         for i,row in enumerate(onesrow):
-            tmp = []
             for j,col in enumerate(onescol):
-                tmp.append(row + col - (len(grid[0]) - row) - (len(grid) - col))
-            ans.append(tmp)
-        return ans
+                grid[i][j] = row + col - (len(grid[0]) - row) - (len(grid) - col)
+                
+        return grid
