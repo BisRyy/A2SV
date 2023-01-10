@@ -1,9 +1,10 @@
 class Solution:
     def buildArray(self, nums: List[int]) -> List[int]:
-        ans = []
+        array = []
         i = 0
+        
         for num in nums:
-            ans.append(nums[nums[i]])
+            array.append(nums[nums[i]])
             i+=1
 
-        return ans
+        return array
