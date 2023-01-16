@@ -17,16 +17,8 @@ class Solution:
                         [16,7,10,11]
                     ]
         '''
-        a = []
-        for i in range(len(matrix)):
-            m = []
-            for j in range(len(matrix[0])):
-                m.append(matrix[j][i])
-            a.append(m[::-1])
-            
-        for i in range(len(matrix)):
-            m = []
-            for j in range(len(matrix[0])):
-                matrix[i][j] = a[i][j]
-                
-        del a
+        matrix.reverse()
+        print(matrix)
+        for row in range(len(matrix)):
+            for col in range(row):
+                matrix[row][col],matrix[col][row]=matrix[col][row],matrix[row][col]
