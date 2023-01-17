@@ -1,10 +1,13 @@
 class Solution:
     def sortPeople(self, names: List[str], height: List[int]) -> List[str]:
         
-        for name in names:
-            for index in range(len(height)-1):
-                if height[index] < height[index+1]:
-                    height[index],  height[index+1] = height[index+1], height[index]
-                    names[index],  names[index+1] = names[index+1], names[index]
+        for i in range(len(names)-1):
+            maximum  = i
+            for index in range(i+1,len(height)):
+                if height[index] > height[maximum]:
+                    maximum = index
+            
+            height[i],  height[maximum] = height[maximum], height[i]
+            names[i],  names[maximum] = names[maximum], names[i]
             
         return names
