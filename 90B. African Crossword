@@ -1,0 +1,78 @@
+# import sys
+# input = sys.stdin.readline
+ 
+############ ---- Input Functions ---- ############
+def inp():
+    return(int(input()))
+def inlt():
+    return(list(map(int,input().split())))
+def insr():
+    s = input()
+    return(list(s[:len(s) - 1]))
+def invr():
+    return(map(int,input().split()))
+    
+m, n = invr()
+
+lines = []
+columns = []
+cross = []
+
+for i in range(m):
+    lines.append(list(input()))
+    cross.append([0]*n)
+
+for i in range(m):
+    for j in range(n):
+        if lines[i].count(lines[i][j]) > 1:
+            cross[i][j] = "1"
+
+for col in zip(*lines):
+    columns.append(col)
+    
+for i in range(n):
+    for j in range(m):
+        if columns[i].count(columns[i][j]) > 1:
+            cross[j][i] = "1"
+
+answer = ""
+for i in range(m):
+    for j in range(n):
+        if cross[i][j] == 0:
+            cross[i][j] = lines[i][j]
+            answer +=  lines[i][j]
+
+print(answer)
+
+'''
+    [['c', 'b', 'a'], 
+     ['b', 'c', 'd'], 
+     ['c', 'b', 'c']] 
+
+    [('c', 'b', 'c'),
+     ('b', 'c', 'b'),
+     ('a', 'd', 'c')]
+     
+    [[1, 0, 0], 
+     [0, 0, 0], 
+     [1, 0, 1]] 
+
+
+   [['f', 'c', 'o', 'f', 'd'],
+    ['o', 'o', 'e', 'd', 'o'],
+    ['a', 'f', 'a', 'o', 'a'],
+    ['r', 'd', 'c', 'd', 'f'],
+    ['e', 'o', 'f', 's', 'f']] 
+    
+    [[0, 0, 0, 0, 0],
+    [0, '1', 0, '1', 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, '1', '1'],
+    [0, '1', 0, 0, '1']] 
+    
+    [('f', 'o', 'a', 'r', 'e'),
+     ('c', 'o', 'f', 'd', 'o'),
+     ('o', 'e', 'a', 'c', 'f'),
+     ('f', 'd', 'o', 'd', 's'),
+     ('d', 'o', 'a', 'f', 'f')] 
+'''
