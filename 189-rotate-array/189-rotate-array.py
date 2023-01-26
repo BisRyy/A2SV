@@ -6,9 +6,8 @@ class Solution:
         n = len(nums)
         j = 0
         k = k % n
-        p = nums[n-k:] + nums[:n-k]
 
-        for i in p :
+        for i in nums[n-k:] + nums[:n-k]:
             nums[j] = i
             j+=1
     
