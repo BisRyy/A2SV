@@ -8,11 +8,16 @@ class Solution:
         a = ""
         b = ""
         
-        while l1: a = str(l1.val)+a;l1 = l1.next
-        while l2:b = str(l2.val)+b;l2 = l2.next
+        while l1: 
+            a = str(l1.val)+a
+            l1 = l1.next
+            
+        while l2:
+            b = str(l2.val)+b
+            l2 = l2.next
         
         c = str(int(a) + int(b))
-        print(c)
+        
         head = None
         for i in c:
             new = ListNode(int(i))
