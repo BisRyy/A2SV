@@ -7,7 +7,10 @@ class Solution:
     def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:
         arr = []
         curr = head
-        while curr: arr.append(curr.val);curr=curr.next
+        
+        while curr: 
+            arr.append(curr.val)
+            curr=curr.next
         
         s = []
         for i in range(len(arr)):
