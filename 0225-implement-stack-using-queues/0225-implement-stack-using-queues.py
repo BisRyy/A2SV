@@ -2,19 +2,24 @@ class MyStack:
 
     def __init__(self):
         self.a = []
+        self.size = 0
 
     def push(self, x: int) -> None:
         self.a.append(x)
+        self.size+=1
 
     def pop(self) -> int:
-        return self.a.pop()
+        x = self.a[self.size-1]
+        del self.a[self.size-1]
+        self.size-=1
+        return x
 
     def top(self) -> int:
-        return self.a[-1]
+        return self.a[self.size-1]
         
 
     def empty(self) -> bool:
-        return len(self.a) == 0
+        return self.size < 1
 
 
 # Your MyStack object will be instantiated and called as such:
