@@ -9,8 +9,8 @@ class Solution:
         
         def minValueNode(node):
             current = node
-            while(current.left):
-                current = current.left
+            while(current.right):
+                current = current.right
             return current
         
         if not root:
@@ -22,8 +22,8 @@ class Solution:
             elif not root.right:
                 return root.left
             
-            root.val = minValueNode(root.right).val
-            root.right = self.deleteNode(root.right, root.val)
+            root.val = minValueNode(root.left).val
+            root.left = self.deleteNode(root.left, root.val)
 
         elif root.val > key:
             root.left = self.deleteNode(root.left, key)
