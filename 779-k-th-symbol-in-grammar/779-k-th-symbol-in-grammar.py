@@ -1,14 +1,22 @@
 class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
+        if n == 1:
+            return 0
         
-        def grammar(n, k):
-            if n == 0:
-                return False
-            
-            prevRow = pow(2, n-1)
-            if k >= prevRow:
-                return not grammar(n-1, k % prevRow)
+        prev  = self.kthGrammar(n - 1, ceil(k/2))
+        
+        if prev == 1:
+            if k % 2 == 0:
+                return 0
             else:
-                return grammar(n-1, k % prevRow)
-
-        return 1 if grammar(n-1, k-1) else 0
+                return 1
+        else:
+            if k%2 == 0:
+                return 1
+            else:
+                return 0
+                
+                
+            
+            
+        
