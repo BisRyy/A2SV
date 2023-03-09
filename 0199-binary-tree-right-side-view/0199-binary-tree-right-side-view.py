@@ -6,28 +6,18 @@
 #         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        def maxDepth(root):
-            if not root:
-                return 0    
-            return max(maxDepth(root.left), maxDepth(root.right)) + 1
-        depth = maxDepth(root)
         
-        def goRight(root, level):
-            if not root:
-                return
-            if level == 0:
-                return root.val
-            
-            ans = goRight(root.right, level-1)
-            if ans != None :
-                return ans
-            else:
-                return goRight(root.left, level-1)
-                    
-        ans = []
+        result=[]
         
-        for i in range(depth):
-            
-            ans.append(goRight(root, i))
-            
-        return ans
+        def func(root,level):
+            if root is None:
+                return 
+            if len(result)==level:
+                result.append(root.val)
+            func(root.right,level+1)
+            func(root.left,level+1)
+
+        
+        func(root,0)
+        
+        return result
