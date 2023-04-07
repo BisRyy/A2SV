@@ -2,7 +2,6 @@ class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
         visited = set()
         def dfs(node):
-            print(node)
             if node == destination:
                 return True
             
@@ -16,7 +15,7 @@ class Solution:
         
         d = defaultdict(list)
         for edge in edges:
-            d[edge[0]] += [edge[1]]
-            d[edge[1]] += [edge[0]]
+            d[edge[0]].append(edge[1])
+            d[edge[1]].append(edge[0])
         
         return dfs(source)
