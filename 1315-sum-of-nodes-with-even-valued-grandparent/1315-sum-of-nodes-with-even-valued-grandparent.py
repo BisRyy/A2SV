@@ -32,7 +32,6 @@ class Solution:
             
             return ans
         
-        
         return sum(preorderTraversal(root, []))
     
     
