@@ -1,21 +1,22 @@
+class Union:
+    def __init__(self, n):
+        self.root = list(range(n))
+        self.rank = [1] * n
+    def find(self, x):
+        if self.root[x] != x:
+            self.root[x] = self.find(self.root[x])
+        return self.root[x]
+    def union(self, x, y):
+        root_x, root_y = self.find(x), self.find(y)
+        if root_x != root_y:
+            if self.rank[root_x] > self.rank[root_y]:
+                root_x, root_y = root_y, root_x
+            self.rank[root_y] += self.rank[root_x]
+            self.root[root_x] = root_y
+        
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        visited = set()
-        def dfs(node):
-            if node == destination:
-                return True
-            
-            visited.add(node)
-            
-            for neighbour in d[node]:
-                if neighbour not in visited:
-                    if dfs(neighbour):
-                        return True
-            return False
-        
-        d = defaultdict(list)
-        for edge in edges:
-            d[edge[0]].append(edge[1])
-            d[edge[1]].append(edge[0])
-        
-        return dfs(source)
+        u = Union(n)
+        for x, y in edges:
+            u.union(x, y)
+        return u.find(source) == u.find(destination)
