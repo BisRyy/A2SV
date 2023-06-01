@@ -1,5 +1,12 @@
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
-        for i in range(2, len(cost)):
-            cost[i] += min(cost[i-1], cost[i-2])
-        return min(cost[-1], cost[-2])
+        n = len(cost)
+        cost.append(0)
+        memo={}
+        def dp(i,n):
+            if i >= n: return 0
+            if i in memo: return memo[i]
+            memo[i] = cost[i] + min(dp(i+1, n), dp(i+2,n))
+            return memo[i]
+        
+        return dp(-1, n)
