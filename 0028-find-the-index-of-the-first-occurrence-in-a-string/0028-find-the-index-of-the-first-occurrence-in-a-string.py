@@ -1,28 +1,41 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
-        if len(haystack) < len(needle):
-            return -1
-        if haystack == needle:
-            return 0
+        n = len(needle)
+        lps = [0] * n
         
-        def hash(word):
-            n = 0
-            for i, letter in enumerate(word):
-                n += (ord(letter)- ord("a")) * 26**(len(word)-1-i)
-            return n % (10**9 + 7)
-        x = hash(needle)
-        y = hash(haystack[:len(needle)])
+        i = 0
+        j = 1
+        while j < n:
+            if needle[i] == needle[j]:
+                lps[j] = i+1
+                i+=1
+                j+=1
+            else:
+                if i < 1:
+                    j+=1
+                else:
+                    i = lps[i-1]
+                    
+        i = 0
+        j = 0
+        while j < n and i < len(haystack):
+            if haystack[i] == needle[j]:
+                i+=1
+                j+=1
+            else:
+                if j == 0:
+                    i+=1
+                else:
+                    j = lps[j-1] 
         
-        for i in range(len(haystack) - len(needle)):
-            if x == y:
-                return i
-            
-            y -=  (ord(haystack[i]) - ord("a")) * 26**(len(needle)-1)
-            y *= 26
-            y += (ord(haystack[i+len(needle)]) - ord("a"))
-            y %= (10**9 + 7)
-            
-            if x == y:
-                return i+1
+        if j == n:
+            return i-j
         return -1
-            
+    
+    
+    
+    
+    
+    
+    
+    
